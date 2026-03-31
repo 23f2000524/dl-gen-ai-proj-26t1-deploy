@@ -23,9 +23,10 @@ def load_model():
     feature_extractor = AutoFeatureExtractor.from_pretrained(MODEL_ID)
 
     model = AutoModelForAudioClassification.from_pretrained(
-        MODEL_ID,
-        num_labels=10
-    )
+    MODEL_ID,
+    num_labels=10,
+    ignore_mismatched_sizes=True
+)
 
     # Load your trained weights
     state_dict = torch.load("model.pt", map_location="cpu")
